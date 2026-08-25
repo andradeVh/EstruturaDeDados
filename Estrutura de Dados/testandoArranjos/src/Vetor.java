@@ -39,7 +39,7 @@ public class Vetor<T> {
 
     @SuppressWarnings("unchecked")
     private void expandir() {
-        T[] novo = (T[]) new String[elementos.length * 2];
+        T[] novo = (T[]) new Object[elementos.length * 2];
 
         for (int i = 0; i < elementos.length; i++) {
             novo[i] = elementos[i];
@@ -105,7 +105,7 @@ public class Vetor<T> {
 
     }
 
-    public int buscarLinear(Vetor<Integer> vetor, int alvo) {
+    public int buscaLinear(Vetor<Integer> vetor, int alvo) {
         for (int i = 0; i < vetor.obterTamanho(); i++) {
             if (vetor.ler(i) == alvo) {
                 System.out.println(i);
@@ -115,13 +115,37 @@ public class Vetor<T> {
         return -1;
     }
 
-    public int buscarLinearOrdenada(Vetor<Integer> vetor, int alvo) {
+    public int buscaLinearOrdenada(Vetor<Integer> vetor, int alvo) {
+        int contador = 0;
         for (int i = 0; i < vetor.obterTamanho(); i++) {
+            contador++;
             if (vetor.ler(i) == alvo) {
-                System.out.println(i);
+                // System.out.println(i);
+                System.out.println("Número de comparações (Linear): " + contador);
                 return i;
             } else if (vetor.ler(i) > alvo) {
                 return -1;
+            }
+        }
+        return -1;
+    }
+
+    public int buscaBinaria(Vetor<Integer> vetor, int alvo) {
+        int contador = 0;
+        int inicio = 0;
+        int fim = vetor.obterTamanho() - 1;
+
+        while (inicio <= fim) {
+            int meio = (inicio + fim) / 2;
+            contador++;
+            if (vetor.ler(meio) == alvo) {
+                // System.out.println(meio);
+                System.out.println("Número de comparações (Binária): " + contador);
+                return meio;
+            } else if (vetor.ler(meio) < alvo) {
+                inicio = meio + 1;
+            } else {
+                fim = meio - 1;
             }
         }
         return -1;
@@ -137,12 +161,12 @@ public class Vetor<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public void inserirAleatorio(int valores) {
+    public void inserirAleatorio(int valores, int range) {
         int valorAleatorio = 0;
         Random random = new Random();
 
         for (int i = 0; i < valores; i++) {
-            valorAleatorio = random.nextInt(100000);
+            valorAleatorio = random.nextInt(range);
 
             if (buscarValor((T) Integer.valueOf(valorAleatorio)) != -1) {
                 i--;
@@ -154,24 +178,21 @@ public class Vetor<T> {
                     inserir(0, (T) Integer.valueOf(valorAleatorio));
                 } else {
                     int tamanhoAtual = tamanho;
-                    for (int j = 0; j < tamanhoAtual; j++) {
-                        if (elementos[j] != null) {
+                    int j;
 
-                            if (valorAleatorio < (Integer) elementos[j]) {
-                                inserir(j, (T) Integer.valueOf(valorAleatorio));
-                                break;
-                            }
-
-                            if (j == tamanho - 1 && valorAleatorio > (Integer) elementos[j]) {
-                                inserir(tamanho, (T) Integer.valueOf(valorAleatorio));
-                                break;
-                            }
-
+                    for (j = 0; j < tamanhoAtual; j++) {
+                        if (elementos[j] != null && valorAleatorio < (Integer) elementos[j]) {
+                            inserir(j, (T) Integer.valueOf(valorAleatorio));
+                            break;
                         }
 
+                    }
+                    if (j == tamanhoAtual) {
+                        inserir(tamanhoAtual, (T) Integer.valueOf(valorAleatorio));
                     }
                 }
             }
         }
     }
+
 }
