@@ -136,18 +136,33 @@ public class Vetor<T> {
         int fim = vetor.obterTamanho() - 1;
 
         while (inicio <= fim) {
-            int meio = (inicio + fim) / 2;
+            int meio = (inicio + fim)/2;
             contador++;
             if (vetor.ler(meio) == alvo) {
-                // System.out.println(meio);
                 System.out.println("Número de comparações (Binária): " + contador);
                 return meio;
-            } else if (vetor.ler(meio) < alvo) {
-                inicio = meio + 1;
+            }  else if (vetor.ler(meio) > alvo) {
+                fim = meio -1;
             } else {
-                fim = meio - 1;
+                inicio = meio + 1;
             }
         }
+        return -1;
+    }
+
+    public int menorValor(int a, int b){
+        return (a > b) ? b : a;
+    }
+
+    public int buscaFibonacci(Vetor<Integer> vetor, int alvo){
+        int a, b;
+        a = 1;
+        b = 1;
+
+        for (int i = 2; i <= alvo; i++ ){
+
+        }
+
         return -1;
     }
 

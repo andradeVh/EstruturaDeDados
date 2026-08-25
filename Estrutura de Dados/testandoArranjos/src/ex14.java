@@ -51,17 +51,18 @@ public class ex14 {
 
     public static void testarPosicao(Vetor<Integer> vetor, int posicao, String NomePosicao) {
         System.out.println("\n--- Testando posição: " + NomePosicao + " ---");
-        // Busca Linear Ordenada
-        long inicioLinear = System.nanoTime();
-        vetor.buscaLinearOrdenada(vetor, posicao);
-        long fimLinear = System.nanoTime();
-        long duracaoLinear = fimLinear - inicioLinear;
 
         // Busca Binária
         long inicioBinaria = System.nanoTime();
         vetor.buscaBinaria(vetor, posicao);
         long fimBinaria = System.nanoTime();
         long duracaoBinaria = fimBinaria - inicioBinaria;
+
+        // Busca Linear Ordenada
+        long inicioLinear = System.nanoTime();
+        vetor.buscaLinearOrdenada(vetor, posicao);
+        long fimLinear = System.nanoTime();
+        long duracaoLinear = fimLinear - inicioLinear;
 
         System.out.println("Tempo de busca linear ordenada: " + duracaoLinear + " ns");
         System.out.println("Tempo de busca binária: " + duracaoBinaria + " ns");
@@ -73,6 +74,7 @@ public class ex14 {
 
     public static void testarPosicaoArrayNativo(int[] vetor, int posicao, String nomePosicao) {
         System.out.println("\n--- Testando posição (Array Nativo): " + nomePosicao + " ---");
+
         // Arrays.binarySearch()
         long inicioBinarySearch = System.nanoTime();
         int pos = Arrays.binarySearch(vetor, posicao);
@@ -92,4 +94,5 @@ public class ex14 {
 
         Arrays.sort(array);
     }
+    
 }

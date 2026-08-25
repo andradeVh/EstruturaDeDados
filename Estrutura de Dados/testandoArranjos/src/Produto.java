@@ -1,4 +1,4 @@
-public class Produto {
+public class Produto implements Comparable<Produto> {
     private int id;
     private String nome;
     private double preco;
@@ -71,6 +71,11 @@ public class Produto {
         if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
             return false;
         return true;
+    }
+
+    @Override
+    public int compareTo(Produto outro) {
+        return Double.compare(this.preco, outro.preco);
     }
 
 }
