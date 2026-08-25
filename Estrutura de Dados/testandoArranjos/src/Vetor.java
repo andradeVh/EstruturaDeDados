@@ -19,6 +19,24 @@ public class Vetor<T> {
 
     }
 
+    public void inserir(int indice, T elemento) {
+        if (tamanho >= elementos.length) {
+            System.out.println("Vetor cheio");
+            return;
+        }
+
+        if (indice < 0 || indice > elementos.length) {
+            System.out.println("Posição inválida");
+            return;
+        }
+
+        for (int i = tamanho; i > indice; i--) {
+            elementos[i] = elementos[i - 1];
+        }
+        elementos[indice] = elemento;
+        tamanho++;
+    }
+
     @SuppressWarnings("unchecked")
     private void expandir() {
         T[] novo = (T[]) new String[elementos.length * 2];
@@ -48,6 +66,18 @@ public class Vetor<T> {
 
     }
 
+    public int obterTamanho() {
+        return tamanho;
+    }
+
+    public T ler(int indice) {
+        if (indice >= 0 && indice < tamanho) {
+            return elementos[indice];
+        } else {
+            throw new IndexOutOfBoundsException("Indice inválido");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private void reduzir() {
         if (tamanho <= elementos.length / 4) {
@@ -75,9 +105,31 @@ public class Vetor<T> {
 
     }
 
+    public int buscarLinear(Vetor<Integer> vetor, int alvo) {
+        for (int i = 0; i < vetor.obterTamanho(); i++) {
+            if (vetor.ler(i) == alvo) {
+                System.out.println(i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int buscarLinearOrdenada(Vetor<Integer> vetor, int alvo) {
+        for (int i = 0; i < vetor.obterTamanho(); i++) {
+            if (vetor.ler(i) == alvo) {
+                System.out.println(i);
+                return i;
+            } else if (vetor.ler(i) > alvo) {
+                return -1;
+            }
+        }
+        return -1;
+    }
+
     public int buscarValor(T elemento) {
         for (int i = 0; i < tamanho; i++) {
-            if (elementos[i].equals(elemento)) {
+            if (elementos[i] != null && elementos[i].equals(elemento)) {
                 return i;
             }
         }
@@ -87,21 +139,39 @@ public class Vetor<T> {
     @SuppressWarnings("unchecked")
     public void inserirAleatorio(int valores) {
         int valorAleatorio = 0;
+        Random random = new Random();
 
         for (int i = 0; i < valores; i++) {
-            valorAleatorio = new Random().nextInt(1000);
+            valorAleatorio = random.nextInt(100000);
 
-            if (buscarValor((T) Integer.valueOf(valorAleatorio)) == -1) {
-                for (int j = 0; j < tamanho; j++) {
-                    if ((Integer) elementos[j] < valorAleatorio) {
-                        inserir((T) Integer.valueOf(valorAleatorio));
-                        break;
+            if (buscarValor((T) Integer.valueOf(valorAleatorio)) != -1) {
+                i--;
+            }
+
+            else {
+
+                if (tamanho == 0) {
+                    inserir(0, (T) Integer.valueOf(valorAleatorio));
+                } else {
+                    int tamanhoAtual = tamanho;
+                    for (int j = 0; j < tamanhoAtual; j++) {
+                        if (elementos[j] != null) {
+
+                            if (valorAleatorio < (Integer) elementos[j]) {
+                                inserir(j, (T) Integer.valueOf(valorAleatorio));
+                                break;
+                            }
+
+                            if (j == tamanho - 1 && valorAleatorio > (Integer) elementos[j]) {
+                                inserir(tamanho, (T) Integer.valueOf(valorAleatorio));
+                                break;
+                            }
+
+                        }
+
                     }
                 }
-
             }
         }
-
-        return;
     }
 }
