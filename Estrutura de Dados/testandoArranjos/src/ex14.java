@@ -7,7 +7,7 @@ public class ex14 {
 
         Scanner scanner = new Scanner(System.in);
 
-        // relatorio de teste de tempo buscaOrdenada vs BuscaBinaria
+        // relatorio de teste de tempo buscaLinear vs BuscaBinaria
 
         System.out.println("Quantos vetores você deseja criar?");
         int quantidade = scanner.nextInt();
@@ -28,7 +28,7 @@ public class ex14 {
             int valorMeio = vetor.ler(qtd / 2);
             int valorFim = vetor.ler(qtd - 1);
 
-            // Busca Linear Ordenada && Buscar Binária
+            // Busca Linear Linear && Buscar Binária
             testarPosicao(vetor, valorInicio, "Início");
             testarPosicao(vetor, valorMeio, "Meio");
             testarPosicao(vetor, valorFim, "Fim");
@@ -58,16 +58,23 @@ public class ex14 {
         long fimBinaria = System.nanoTime();
         long duracaoBinaria = fimBinaria - inicioBinaria;
 
-        // Busca Linear Ordenada
+        // Busca Linear
         long inicioLinear = System.nanoTime();
         vetor.buscaLinearOrdenada(vetor, posicao);
         long fimLinear = System.nanoTime();
         long duracaoLinear = fimLinear - inicioLinear;
 
-        System.out.println("Tempo de busca linear ordenada: " + duracaoLinear + " ns");
+        // Busca Fibonacci
+        long inicioFib = System.nanoTime();
+        vetor.buscaFibonacci(vetor, posicao);
+        long fimFib = System.nanoTime();
+        long duracaoFib = fimFib - inicioFib;
+
+        System.out.println("Tempo de busca linear: " + duracaoLinear + " ns");
         System.out.println("Tempo de busca binária: " + duracaoBinaria + " ns");
+        System.out.println("Tempo de busca Fibonacci: " + duracaoFib + " ns");
         System.out.println(
-                "Melhor método: " + (duracaoLinear < duracaoBinaria ? "Busca Linear Ordenada" : "Busca Binária"));
+                "Melhor método: " + (duracaoLinear < duracaoBinaria ? "Busca Linear" : "Busca Binária"));
         System.out.println("----------------------------------------");
 
     }

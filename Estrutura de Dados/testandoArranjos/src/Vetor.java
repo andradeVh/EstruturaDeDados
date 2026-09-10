@@ -136,13 +136,13 @@ public class Vetor<T> {
         int fim = vetor.obterTamanho() - 1;
 
         while (inicio <= fim) {
-            int meio = (inicio + fim)/2;
+            int meio = (inicio + fim) / 2;
             contador++;
             if (vetor.ler(meio) == alvo) {
                 System.out.println("Número de comparações (Binária): " + contador);
                 return meio;
-            }  else if (vetor.ler(meio) > alvo) {
-                fim = meio -1;
+            } else if (vetor.ler(meio) > alvo) {
+                fim = meio - 1;
             } else {
                 inicio = meio + 1;
             }
@@ -150,17 +150,60 @@ public class Vetor<T> {
         return -1;
     }
 
-    public int menorValor(int a, int b){
+    private int menorValor(int a, int b) {
         return (a > b) ? b : a;
     }
 
-    public int buscaFibonacci(Vetor<Integer> vetor, int alvo){
-        int a, b;
-        a = 1;
-        b = 1;
+    public int buscaFibonacci(Vetor<Integer> vetor, int alvo) {
 
-        for (int i = 2; i <= alvo; i++ ){
+        // https://users.ics.forth.gr/~lourakis/fibsrch/
+        
+        int contador = 0;
+        int n = vetor.obterTamanho();
 
+        int fib1, fib2, fibM;
+
+        fib1 = 1; // F(k-2)
+        fib2 = 0; // F(k-1)
+
+        fibM = fib1 + fib2; // F(k)
+
+        // encontrar o menor numero de fibonacci maior ou igual ao n
+        while (fibM < n) {
+            fib2 = fib1;
+            fib1 = fibM;
+            fibM = fib1 + fib2;
+        }
+
+        int offset = -1;
+
+        while (fibM > 1) {
+            int i = menorValor(offset + fib2, n - 1);
+
+            contador++;
+
+            if (vetor.ler(i) < alvo) {
+                fibM = fib1;
+                fib1 = fib2;
+                fib2 = fibM - fib1;
+                offset = i;
+
+            } else if (vetor.ler(i) > alvo) {
+                fibM = fib2;
+                fib1 = fib1 - fib2;
+                fib2 = fibM - fib1;
+            } else {
+                System.out.println("Número de comparações (Fibonacci): " + contador);
+                return i;
+            }
+        }
+
+        if (fib1 == 1 && (offset + 1 < n)) {
+            contador++;
+            if (vetor.ler(offset + 1) == alvo) {
+                System.out.println("Número de comparações (Fibonacci): " + contador);
+                return offset + 1;
+            }
         }
 
         return -1;
