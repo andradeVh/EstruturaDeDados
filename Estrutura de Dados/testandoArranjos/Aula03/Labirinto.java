@@ -1,4 +1,3 @@
-package Aula03;
 
 public class Labirinto {
 
@@ -162,16 +161,18 @@ public class Labirinto {
 
                         char posicaoAtual = mapa[linhaAtual][colunaAtual];
 
-                        if (posicaoAtual == '*' || posicaoAtual == '.') {
+                        if (posicaoAtual == '*' || posicaoAtual == '@') {
                                 continue;
                         }
 
                         if (posicaoAtual == 'T') {
                                 return true;
 
-                        } else if (posicaoAtual == ' ' || posicaoAtual == 'P') {
+                        }
+
+                        if (posicaoAtual == ' ' || posicaoAtual == 'P') {
                                 if (posicaoAtual != 'P') {
-                                        mapa[linhaAtual][colunaAtual] = '.'; // Marca como visitada
+                                        mapa[linhaAtual][colunaAtual] = '@';
                                 }
 
                                 // Adiciona as posições adjascentes na pilha
@@ -181,14 +182,13 @@ public class Labirinto {
                                 pilha.push(linhaAtual + 1); // Baixo
                                 pilha.push(colunaAtual);
 
-                                pilha.push(linhaAtual); 
+                                pilha.push(linhaAtual);
                                 pilha.push(colunaAtual - 1); // Esquerda
 
-                                pilha.push(linhaAtual); 
+                                pilha.push(linhaAtual);
                                 pilha.push(colunaAtual + 1); // Direita
-                        } else if (posicaoAtual == '*') {
-                                continue;
                         }
+               
 
                 }
                 return false;

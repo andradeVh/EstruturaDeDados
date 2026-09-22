@@ -1,7 +1,3 @@
-package Aula03.testes;
-
-import Aula03.Pilha;
-
 public class teste1 {
     static void main(){
         Pilha<Integer> pilha = new Pilha<>(5);
@@ -24,7 +20,7 @@ public class teste1 {
         pilha.pop();
         pilha.pop();
         pilha.pop();
-        pilha.pop(); // tentando desempilhar quando a pilha está vazia
+        // pilha.pop(); // tentando desempilhar quando a pilha está vazia
   
     }
 }

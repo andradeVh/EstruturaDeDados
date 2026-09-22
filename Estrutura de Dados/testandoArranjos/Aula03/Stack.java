@@ -1,6 +1,4 @@
-package Aula03;
 
-import Aula02.Vetor;
 // composição ("tem um")
 public class Stack<T extends Comparable<T>> {
     private Vetor<T> vetor;

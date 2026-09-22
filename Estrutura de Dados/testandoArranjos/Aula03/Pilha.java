@@ -1,5 +1,3 @@
-package Aula03;
-
 public class Pilha<T extends Comparable<T>> {
     private int topo;
     private T[] elementos;
