@@ -1,3 +1,7 @@
+package Aula02.testes;
+import Aula02.Vetor;
+import Aula02.Produto;
+
 public class ex10 {
 
     static void main() {

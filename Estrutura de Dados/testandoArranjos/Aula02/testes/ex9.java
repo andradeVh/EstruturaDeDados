@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.Caixa;
 public class ex9 {
     static void main(){
         Caixa<String> caixaTexto = new Caixa<>();

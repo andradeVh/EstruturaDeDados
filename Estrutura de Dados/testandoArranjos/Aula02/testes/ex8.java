@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.VetorObjeto;
 public class ex8 {
     static void main(){
         VetorObjeto vetor = new VetorObjeto(10);

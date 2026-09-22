@@ -1,3 +1,4 @@
+package Aula02;
 public class VetorDinamico<T> {
     private T[] elementos;
     private int tamanho;

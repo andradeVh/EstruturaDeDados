@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.VetorDinamico;
 public class ex6 {
     static void main(){
 

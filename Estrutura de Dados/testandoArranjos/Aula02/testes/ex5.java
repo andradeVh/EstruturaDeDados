@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.VetorDeListas;
 public class ex5 {
     static void main (){
         VetorDeListas vetor = new VetorDeListas();

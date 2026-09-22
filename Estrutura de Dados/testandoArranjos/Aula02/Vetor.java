@@ -1,3 +1,6 @@
+package Aula02;
+
+
 import java.util.Random;
 
 public class Vetor<T> {
@@ -78,10 +81,18 @@ public class Vetor<T> {
         }
     }
 
+    public boolean isEmpty() {
+        if (tamanho == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @SuppressWarnings("unchecked")
     private void reduzir() {
         if (tamanho <= elementos.length / 4) {
-            T[] novo = (T[]) new String[elementos.length / 2];
+            T[] novo = (T[]) new Object[elementos.length / 2];
             for (int i = 0; i < tamanho; i++) {
                 novo[i] = elementos[i];
             }
@@ -96,7 +107,7 @@ public class Vetor<T> {
             return;
         }
 
-        for (int i = indice; i < tamanho; i++) {
+        for (int i = indice; i < tamanho - 1; i++) {
             elementos[i] = elementos[i + 1];
         }
         elementos[tamanho - 1] = null;

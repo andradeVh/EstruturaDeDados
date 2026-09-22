@@ -1,6 +1,6 @@
-package Aula03.src;
+package Aula03;
 
-import Aula02.src.Vetor;
+import Aula02.Vetor;
 // composição ("tem um")
 public class Stack<T extends Comparable<T>> {
     private Vetor<T> vetor;
@@ -10,15 +10,15 @@ public class Stack<T extends Comparable<T>> {
     }
     
     public void push(T elemento) {
-        vetor.add(elemento);
+        vetor.inserir(elemento);
     }
 
     public T pop() {
         if (isEmpty()) {
             throw new RuntimeException("Pilha vazia");
         }
-        T valor = vetor.get(vetor.size() - 1);
-        vetor.remove(vetor.size() - 1);
+        T valor = vetor.ler(vetor.obterTamanho() - 1);
+        vetor.remover(vetor.obterTamanho() - 1);
         return valor;
     }
 
@@ -30,6 +30,6 @@ public class Stack<T extends Comparable<T>> {
         if (isEmpty()) {
             throw new RuntimeException("Pilha vazia");
         }
-        return vetor.get(vetor.size() - 1);
+        return vetor.ler(vetor.obterTamanho() - 1);
     }
 }

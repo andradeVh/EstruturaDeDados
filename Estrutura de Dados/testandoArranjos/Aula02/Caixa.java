@@ -1,3 +1,4 @@
+package Aula02;
 public class Caixa<T> {
     private T valor;
 

@@ -1,3 +1,4 @@
+package Aula02;
 public class Produto implements Comparable<Produto> {
     private int id;
     private String nome;

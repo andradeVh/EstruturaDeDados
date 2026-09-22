@@ -1,3 +1,4 @@
+package Aula02;
 import java.util.Random;
 
 public class VetorEstatico<T> {

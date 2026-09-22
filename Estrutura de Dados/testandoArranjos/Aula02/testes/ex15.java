@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.Vetor;
 public class ex15 {
     static void main() {
         Vetor<Integer> vetor = new Vetor<>(1000);

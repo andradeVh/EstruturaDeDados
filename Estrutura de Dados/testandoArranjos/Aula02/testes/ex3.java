@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.VetorEstatico;
 public class ex3 {
     static void main(){
         VetorEstatico vetor = new VetorEstatico(10);

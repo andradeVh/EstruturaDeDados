@@ -1,6 +1,6 @@
-package Aula03.src.testes;
+package Aula03.testes;
 
-import Aula03.src.Pilha;
+import Aula03.Pilha;
 
 public class teste1 {
     static void main(){

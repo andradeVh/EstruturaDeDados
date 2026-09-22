@@ -1,3 +1,4 @@
+package Aula02;
 public class VetorDeListas<T> {
     private VetorEstatico<T>[] nomesporletra;
 

@@ -1,3 +1,5 @@
+package Aula02.testes;
+import Aula02.Vetor;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;

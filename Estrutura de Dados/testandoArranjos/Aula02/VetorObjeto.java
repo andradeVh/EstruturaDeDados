@@ -1,3 +1,4 @@
+package Aula02;
 public class VetorObjeto {
     private Object[] elementos;
     private int tamanho;
