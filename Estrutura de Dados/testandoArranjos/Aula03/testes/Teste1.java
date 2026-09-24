@@ -1,4 +1,4 @@
-public class teste1 {
+public class Teste1 {
     static void main(){
         Pilha<Integer> pilha = new Pilha<>(5);
 
