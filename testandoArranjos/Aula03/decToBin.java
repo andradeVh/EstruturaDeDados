@@ -1,5 +1,3 @@
-package Aula03;
-
 public class decToBin {
     static void main() {
 
